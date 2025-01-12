@@ -1,1 +1,1 @@
-console.log("ello luv")
+export * from "./components/index"
