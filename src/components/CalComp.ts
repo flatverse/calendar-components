@@ -14,7 +14,7 @@ export class SimpleGreeting extends LitElement {
     return html`
       <div class="cal-comp cal-comp-theme default">
         <cal-comp-basic></cal-comp-basic>
-        <div class="bg light">al</div>
+        <div class="success colors dark-fg inverted">al</div>
       </div>
     `;
   }
