@@ -1,3 +1,62 @@
+#make-theme(
+  @theme-color-bg-basic: #222;
+  @theme-color-fg-basic: #CCC;
+  @theme-color-bg-primary: darkblue;
+  @theme-color-fg-primary: skyblue;
+  @theme-color-bg-success: green;
+  @theme-color-fg-success: limegreen;
+  @theme-color-bg-warning: gold;
+  @theme-color-fg-warning: lightyellow;
+  @theme-color-bg-error: darkred;
+  @theme-color-fg-error: pink;
+  @light-percentage: 16%;
+  @lighter-percentage: 32%;
+  @lightest-percentage: 48%;
+  @dark-percentage: 16%;
+  @darker-percentage: 32%;
+  @darkest-percentage: 48%;
+  @theme-font-family: Consolas, menlo, Courier;
+  @theme-border-size: 2px;
+  @theme-border-radius: 8px;
+  @theme-padding-unit: 0.5em;
+) {
+  .make-color-table(@bg; @fg; @categoryName;) {
+    --theme-color-bg-@{categoryName}-gradient-none: @bg;
+    --theme-color-fg-@{categoryName}-gradient-none: @fg;
+
+    --theme-color-bg-@{categoryName}-gradient-dark: darken(@bg, @dark-percentage, relative);
+    --theme-color-bg-@{categoryName}-gradient-darker: darken(@bg, @darker-percentage, relative);
+    --theme-color-bg-@{categoryName}-gradient-darkest: darken(@bg, @darkest-percentage, relative);
+
+    --theme-color-fg-@{categoryName}-gradient-dark: darken(@fg, @dark-percentage, relative);
+    --theme-color-fg-@{categoryName}-gradient-darker: darken(@fg, @darker-percentage, relative);
+    --theme-color-fg-@{categoryName}-gradient-darkest: darken(@fg, @darkest-percentage, relative);
+
+    --theme-color-bg-@{categoryName}-gradient-light: lighten(@bg, @light-percentage, relative);
+    --theme-color-bg-@{categoryName}-gradient-lighter: lighten(@bg, @lighter-percentage, relative);
+    --theme-color-bg-@{categoryName}-gradient-lightest: lighten(@bg, @lightest-percentage, relative);
+
+    --theme-color-fg-@{categoryName}-gradient-light: lighten(@fg, @light-percentage, relative);
+    --theme-color-fg-@{categoryName}-gradient-lighter: lighten(@fg, @lighter-percentage, relative);
+    --theme-color-fg-@{categoryName}-gradient-lightest: lighten(@fg, @lightest-percentage, relative);
+
+    --theme-color-bg-@{categoryName}: var(~'--theme-color-bg-@{categoryName}-gradient-none');
+    --theme-color-fg-@{categoryName}: var(~'--theme-color-fg-@{categoryName}-gradient-none');
+
+  }
+  .make-color-table(@theme-color-bg-basic, @theme-color-fg-basic, basic);
+  .make-color-table(@theme-color-bg-primary, @theme-color-fg-primary, primary);
+  .make-color-table(@theme-color-bg-success, @theme-color-fg-success, success);
+  .make-color-table(@theme-color-bg-warning, @theme-color-fg-warning, warning);
+  .make-color-table(@theme-color-bg-error, @theme-color-fg-error, error);
+
+  --theme-padding-unit: @theme-padding-unit;
+  --theme-border-size: @theme-border-size;
+  --theme-border-radius: @theme-border-radius;
+
+  --theme-font-family: @theme-font-family;
+}
+
 #make-color-classes(
   @categoryName;
   @gradient;
@@ -26,47 +85,7 @@
   }
 }
 
-#make-theme(
-  @theme-color-bg-basic: #222;
-  @theme-color-fg-basic: #CCC;
-  @theme-color-bg-primary: darkblue;
-  @theme-color-fg-primary: skyblue;
-  @theme-color-bg-success: green;
-  @theme-color-fg-success: limegreen;
-  @theme-color-bg-warning: gold;
-  @theme-color-fg-warning: lightyellow;
-  @theme-color-bg-error: darkred;
-  @theme-color-fg-error: pink;
-  @light-percentage: 16%;
-  @lighter-percentage: 32%;
-  @lightest-percentage: 48%;
-  @dark-percentage: 16%;
-  @darker-percentage: 32%;
-  @darkest-percentage: 48%;
-  @theme-font-family: Consolas, menlo, Courier;
-  @theme-border-size: 2px;
-  @theme-border-radius: 8px;
-) {
-  .make-color-table(@bg; @fg; @categoryName;) {
-    --theme-color-bg-@{categoryName}-gradient-none: @bg;
-    --theme-color-fg-@{categoryName}-gradient-none: @fg;
-
-    --theme-color-bg-@{categoryName}-gradient-dark: darken(@bg, @dark-percentage, relative);
-    --theme-color-bg-@{categoryName}-gradient-darker: darken(@bg, @darker-percentage, relative);
-    --theme-color-bg-@{categoryName}-gradient-darkest: darken(@bg, @darkest-percentage, relative);
-
-    --theme-color-fg-@{categoryName}-gradient-dark: darken(@fg, @dark-percentage, relative);
-    --theme-color-fg-@{categoryName}-gradient-darker: darken(@fg, @darker-percentage, relative);
-    --theme-color-fg-@{categoryName}-gradient-darkest: darken(@fg, @darkest-percentage, relative);
-
-    --theme-color-bg-@{categoryName}-gradient-light: lighten(@bg, @light-percentage, relative);
-    --theme-color-bg-@{categoryName}-gradient-lighter: lighten(@bg, @lighter-percentage, relative);
-    --theme-color-bg-@{categoryName}-gradient-lightest: lighten(@bg, @lightest-percentage, relative);
-
-    --theme-color-fg-@{categoryName}-gradient-light: lighten(@fg, @light-percentage, relative);
-    --theme-color-fg-@{categoryName}-gradient-lighter: lighten(@fg, @lighter-percentage, relative);
-    --theme-color-fg-@{categoryName}-gradient-lightest: lighten(@fg, @lightest-percentage, relative);
-
+#make-category-classes(@categoryName) {
     #make-color-classes(@categoryName, dark);
     #make-color-classes(@categoryName, darker);
     #make-color-classes(@categoryName, darkest);
@@ -74,25 +93,15 @@
     #make-color-classes(@categoryName, lighter);
     #make-color-classes(@categoryName, lightest);
 
-    --theme-color-bg-@{categoryName}: var(~'--theme-color-bg-@{categoryName}-gradient-none');
-    --theme-color-fg-@{categoryName}: var(~'--theme-color-fg-@{categoryName}-gradient-none');
-
     @themeColorBG: ~'--theme-color-bg-@{categoryName}';
     @themeColorFG: ~'--theme-color-fg-@{categoryName}';
-
     .@{categoryName} {
       --theme-color-bg: var(@themeColorBG);
       --theme-color-fg: var(@themeColorFG);
     }
-  }
-  .make-color-table(@theme-color-bg-basic, @theme-color-fg-basic, basic);
-  .make-color-table(@theme-color-bg-primary, @theme-color-fg-primary, primary);
-  .make-color-table(@theme-color-bg-success, @theme-color-fg-success, success);
-  .make-color-table(@theme-color-bg-warning, @theme-color-fg-warning, warning);
-  .make-color-table(@theme-color-bg-error, @theme-color-fg-error, error);
-
-  --theme-border-size: @theme-border-size;
-  --theme-border-radius: @theme-border-radius;
-
-  --theme-font-family: @theme-font-family;
 }
+#make-category-classes(basic);
+#make-category-classes(primary);
+#make-category-classes(success);
+#make-category-classes(warning);
+#make-category-classes(error);

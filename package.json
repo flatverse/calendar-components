@@ -7,7 +7,7 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build-styles": "./less_to_lit.zsh src/styles/themes/index.less && ./less_to_lit.zsh src/styles/base.less",
+    "build-styles": "./less_to_lit.zsh src/styles/base.less",
     "build": "tsc",
     "dev": "parcel examples/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"

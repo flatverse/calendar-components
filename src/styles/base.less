@@ -1,36 +1,39 @@
+@import "./themes/index.less";
+@import "./spacing.less";
+
+.bg {
+  background-color: var(--theme-color-bg);
+}
+.fg {
+  color: var(--theme-color-fg);
+}
+
+.bg.inverted {
+  background-color: var(--theme-color-fg);
+}
+.fg.inverted {
+  color: var(--theme-color-bg);
+}
+
+.shaded {
+  .bg();
+  .fg();
+}
+
+.shaded.inverted {
+  .bg.inverted();
+  .fg.inverted();
+}
+
+.bordered {
+  border: var(--theme-border-size) solid var(--theme-color-fg);
+}
+
+.rounded {
+  border-radius: var(--theme-border-size);
+}
+
 .cal-comp {
-  .bg {
-    background-color: var(--theme-color-bg);
-  }
-  .fg {
-    color: var(--theme-color-fg);
-  }
-
-  .bg.inverted {
-    background-color: var(--theme-color-fg);
-  }
-  .fg.inverted {
-    color: var(--theme-color-bg);
-  }
-
-  .colors {
-    .bg();
-    .fg();
-  }
-
-  .colors.inverted {
-    .bg.inverted();
-    .fg.inverted();
-  }
-
-  .bordered {
-    border: var(--theme-border-size) solid var(--theme-color-fg);
-  }
-
-  .rounded {
-    border-radius: var(--theme-border-size);
-  }
-
   box-sizing: border-box;
   font-family: var(--theme-font-family);
 }
