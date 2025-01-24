@@ -1,12 +1,25 @@
-import { html, LitElement } from "lit";
+import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators";
 import { ClassInfo, classMap } from "lit/directives/class-map"
 import baseStyles from "../styles/base"
 import { ColorShade, ColorType, PaddingValue } from "../styles/types";
 
-@customElement("cal-comp-themed")
-export class ThemedElement extends LitElement {
-  static styles = baseStyles
+/**
+ * @class Themed
+ * @deprecated this probably isn't as useful as using tailwind style classes
+ */
+@customElement("cal-themed")
+export class Themed extends LitElement {
+  static styles = [baseStyles, css`
+    :host {
+      display: block;
+      height: 100%;
+    }
+
+    .full-height {
+      height: 100%;
+    }
+  `]
 
   @property()
   type: ColorType = "basic"
@@ -33,6 +46,8 @@ export class ThemedElement extends LitElement {
   borderBoxed:boolean = false
   @property({type:Boolean})
   fonted:boolean = false
+  @property({type:Boolean})
+  fullHeight:boolean = false
 
   createClassMap():ClassInfo {
     const fromProp = Object.fromEntries(
@@ -55,7 +70,8 @@ export class ThemedElement extends LitElement {
       "bordered": this.bordered,
       ["rounded-"+this.rounded]: true,
       "border-boxed": this.borderBoxed,
-      "fonted": this.fonted
+      "fonted": this.fonted,
+      "full-height": this.fullHeight,
     }
     return {...builtIn, ...fromProp}
   }

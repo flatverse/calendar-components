@@ -54,6 +54,11 @@
   font-family: var(--theme-font-family);
 }
 
+.h-full {
+  box-sizing: border-box;
+  height: 100%;
+}
+
 .cal-comp {
   button {
     font-family: inherit;
@@ -70,4 +75,13 @@
   }
 
   .fonted();
+}
+
+.no-pad {
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  .no-pad();
 }

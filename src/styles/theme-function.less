@@ -4,7 +4,7 @@
   @theme-color-bg-basic: #222;
   @theme-color-fg-basic: #CCC;
   @theme-color-bg-primary: darkblue;
-  @theme-color-fg-primary: skyblue;
+  @theme-color-fg-primary: #2b7fff;
   @theme-color-bg-success: green;
   @theme-color-fg-success: limegreen;
   @theme-color-bg-warning: gold;
@@ -21,6 +21,7 @@
   @theme-border-size: 2px;
   @theme-border-radius: 0.5rem;
   @theme-padding-unit: 0.5rem;
+  @theme-margin-unit: 0.5rem;
 ) {
   .make-color-table(@bg; @fg; @categoryName;) {
     --theme-color-bg-@{categoryName}-gradient-none: @bg;
@@ -53,6 +54,7 @@
   .make-color-table(@theme-color-bg-error, @theme-color-fg-error, error);
 
   --theme-padding-unit: @theme-padding-unit;
+  --theme-margin-unit: @theme-margin-unit;
   --theme-border-size: @theme-border-size;
   --theme-border-radius: @theme-border-radius;
 
@@ -116,6 +118,16 @@
   \*,
   {
     padding: var(--theme-padding);
+  }
+);
+.calc-variations(
+  m,
+  --theme-margin,
+  --theme-margin-unit,
+  0 0.5 1 2 3 4 5 6,
+  \*,
+  {
+    margin: var(--theme-margin);
   }
 );
 
