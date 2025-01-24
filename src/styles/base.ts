@@ -411,6 +411,74 @@ export default css`
   --theme-color-bg: var(--theme-color-bg-error);
   --theme-color-fg: var(--theme-color-fg-error);
 }
+.p-0 {
+  --theme-padding: calc(var(--theme-padding-unit) \* 0);
+  padding: var(--theme-padding);
+}
+.p-0.5 {
+  --theme-padding: calc(var(--theme-padding-unit) \* 0.5);
+  padding: var(--theme-padding);
+}
+.p-1 {
+  --theme-padding: calc(var(--theme-padding-unit) \* 1);
+  padding: var(--theme-padding);
+}
+.p-2 {
+  --theme-padding: calc(var(--theme-padding-unit) \* 2);
+  padding: var(--theme-padding);
+}
+.p-3 {
+  --theme-padding: calc(var(--theme-padding-unit) \* 3);
+  padding: var(--theme-padding);
+}
+.p-4 {
+  --theme-padding: calc(var(--theme-padding-unit) \* 4);
+  padding: var(--theme-padding);
+}
+.p-5 {
+  --theme-padding: calc(var(--theme-padding-unit) \* 5);
+  padding: var(--theme-padding);
+}
+.p-6 {
+  --theme-padding: calc(var(--theme-padding-unit) \* 6);
+  padding: var(--theme-padding);
+}
+.rounded-0 {
+  --theme-border-radius-setting: calc(var(--theme-border-radius) \* 0);
+  border-radius: var(--theme-border-radius-setting);
+}
+.rounded-0.5 {
+  --theme-border-radius-setting: calc(var(--theme-border-radius) \* 0.5);
+  border-radius: var(--theme-border-radius-setting);
+}
+.rounded-1 {
+  --theme-border-radius-setting: calc(var(--theme-border-radius) \* 1);
+  border-radius: var(--theme-border-radius-setting);
+}
+.rounded-2 {
+  --theme-border-radius-setting: calc(var(--theme-border-radius) \* 2);
+  border-radius: var(--theme-border-radius-setting);
+}
+.rounded-3 {
+  --theme-border-radius-setting: calc(var(--theme-border-radius) \* 3);
+  border-radius: var(--theme-border-radius-setting);
+}
+.rounded-4 {
+  --theme-border-radius-setting: calc(var(--theme-border-radius) \* 4);
+  border-radius: var(--theme-border-radius-setting);
+}
+.rounded-5 {
+  --theme-border-radius-setting: calc(var(--theme-border-radius) \* 5);
+  border-radius: var(--theme-border-radius-setting);
+}
+.rounded-6 {
+  --theme-border-radius-setting: calc(var(--theme-border-radius) \* 6);
+  border-radius: var(--theme-border-radius-setting);
+}
+.rounded-full {
+  --theme-border-radius-setting: 100%;
+  border-radius: var(--theme-border-radius-setting);
+}
 .cal-comp-theme-default {
   --theme-color-bg-basic-gradient-none: #222;
   --theme-color-fg-basic-gradient-none: #CCC;
@@ -492,28 +560,10 @@ export default css`
   --theme-color-fg-error-gradient-lightest: #ffffff;
   --theme-color-bg-error: var(--theme-color-bg-error-gradient-none);
   --theme-color-fg-error: var(--theme-color-fg-error-gradient-none);
-  --theme-padding-unit: 0.5em;
+  --theme-padding-unit: 0.5rem;
   --theme-border-size: 2px;
-  --theme-border-radius: 8px;
+  --theme-border-radius: 0.5rem;
   --theme-font-family: Consolas, menlo, Courier;
-}
-.p1 {
-  padding: calc(1 * var(--theme-padding-unit));
-}
-.p2 {
-  padding: calc(2 * var(--theme-padding-unit));
-}
-.p3 {
-  padding: calc(3 * var(--theme-padding-unit));
-}
-.p4 {
-  padding: calc(4 * var(--theme-padding-unit));
-}
-.p5 {
-  padding: calc(5 * var(--theme-padding-unit));
-}
-.p6 {
-  padding: calc(6 * var(--theme-padding-unit));
 }
 .bg {
   background-color: var(--theme-color-bg);
@@ -538,11 +588,32 @@ export default css`
 .bordered {
   border: var(--theme-border-size) solid var(--theme-color-fg);
 }
-.rounded {
-  border-radius: var(--theme-border-size);
+.border-boxed {
+  box-sizing: border-box;
+}
+.border-boxed {
+  box-sizing: border-box;
+}
+.fonted {
+  font-family: var(--theme-font-family);
 }
 .cal-comp {
-  box-sizing: border-box;
   font-family: var(--theme-font-family);
+}
+.cal-comp button {
+  font-family: inherit;
+  --theme-color-bg: var(--theme-color-bg-basic);
+  --theme-color-fg: var(--theme-color-fg-basic);
+  border: var(--theme-border-size) solid var(--theme-color-fg);
+  --theme-border-radius-setting: calc(var(--theme-border-radius) \* 1);
+  border-radius: var(--theme-border-radius-setting);
+  background-color: var(--theme-color-fg);
+  color: var(--theme-color-bg);
+  --theme-padding: calc(var(--theme-padding-unit) \* 1);
+  padding: var(--theme-padding);
+}
+.cal-comp button:hover {
+  background-color: var(--theme-color-bg);
+  color: var(--theme-color-fg);
 }
 `;

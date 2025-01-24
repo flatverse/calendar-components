@@ -4,12 +4,15 @@ import { ClassInfo, classMap } from "lit/directives/class-map"
 import baseStyles from "../styles/base"
 import { ColorShade, ColorType, PaddingValue } from "../styles/types";
 
-@customElement("cal-comp-basic")
-export class Basic extends LitElement {
+@customElement("cal-comp-themed")
+export class ThemedElement extends LitElement {
   static styles = baseStyles
 
   @property()
   type: ColorType = "basic"
+
+  @property()
+  classes: string = ""
 
   @property()
   shade: ColorShade|undefined
@@ -18,11 +21,27 @@ export class Basic extends LitElement {
   @property()
   fg: ColorShade|undefined
 
-  @property()
-  p: PaddingValue = 0;
+  @property({type:Number})
+  p: PaddingValue = 0
+
+  @property({type:Number})
+  rounded:PaddingValue = 0
+
+  @property({type:Boolean})
+  bordered:boolean = false
+  @property({type:Boolean})
+  borderBoxed:boolean = false
+  @property({type:Boolean})
+  fonted:boolean = false
 
   createClassMap():ClassInfo {
-    return {
+    const fromProp = Object.fromEntries(
+      this.classes
+        .split(" ")
+        .filter(classStr => classStr !== "")
+        .map(classStr => [classStr, true])
+    )
+    const builtIn = {
       "basic": this.type === "basic",
       "primary": this.type === "primary",
       "success": this.type === "success",
@@ -32,8 +51,13 @@ export class Basic extends LitElement {
       [this.shade]: this.shade !== undefined,
       [this.bg+"-bg"]: this.bg !== undefined,
       [this.fg+"-fg"]: this.fg !== undefined,
-      ["p"+this.p]: this.p > 0
+      ["p-"+this.p]: this.p > 0,
+      "bordered": this.bordered,
+      ["rounded-"+this.rounded]: true,
+      "border-boxed": this.borderBoxed,
+      "fonted": this.fonted
     }
+    return {...builtIn, ...fromProp}
   }
 
   render() {

@@ -1,2 +1,2 @@
-export * from "./Basic"
+export * from "./ThemedElement"
 export * from "./CalComp"

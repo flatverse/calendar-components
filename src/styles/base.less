@@ -1,5 +1,4 @@
 @import "./themes/index.less";
-@import "./spacing.less";
 
 .bg {
   background-color: var(--theme-color-bg);
@@ -29,11 +28,46 @@
   border: var(--theme-border-size) solid var(--theme-color-fg);
 }
 
-.rounded {
-  border-radius: var(--theme-border-size);
+// .rounded {
+//   border-radius: var(--theme-border-radius);
+// }
+
+// .rounded-x(@x;) {
+//   .rounded-@{x} {
+//     border-radius: calc(var(--theme-border-radius) * @x);
+//   }
+// }
+// .rounded-x(0.5);
+// .rounded-x(2);
+// .rounded-x(3);
+// .rounded-x(4);
+
+.border-boxed {
+  box-sizing: border-box;
+}
+
+.border-boxed {
+  box-sizing: border-box;
+}
+
+.fonted {
+  font-family: var(--theme-font-family);
 }
 
 .cal-comp {
-  box-sizing: border-box;
-  font-family: var(--theme-font-family);
+  button {
+    font-family: inherit;
+    .basic();
+    
+    .bordered();
+    .rounded-1();
+    .shaded.inverted();
+    .p-1();
+
+  }
+  button:hover {
+    .shaded();
+  }
+
+  .fonted();
 }

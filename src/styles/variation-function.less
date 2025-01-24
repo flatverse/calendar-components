@@ -1,0 +1,26 @@
+.calc-variation(
+  @property;
+  @variable;
+  @calc-scalar;
+  @operator;
+) {
+  @{property}: calc(var(@variable) ~'@{operator}' @calc-scalar);
+}
+
+.calc-variations(
+  @selector-base;
+  @property;
+  @variable;
+  @scalar-list;
+  @operator; // i.e. \*
+  @base-block;
+) {
+  each(@scalar-list, {
+    // @val-selector: replace(@value, ".", "_", "g");
+    @val-selector: @value;
+    .@{selector-base}-@{val-selector} {
+      .calc-variation(@property, @variable, @value, @operator);
+      @base-block();
+    }
+  });
+}

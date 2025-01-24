@@ -1,3 +1,5 @@
+@import "./variation-function.less";
+
 #make-theme(
   @theme-color-bg-basic: #222;
   @theme-color-fg-basic: #CCC;
@@ -17,8 +19,8 @@
   @darkest-percentage: 48%;
   @theme-font-family: Consolas, menlo, Courier;
   @theme-border-size: 2px;
-  @theme-border-radius: 8px;
-  @theme-padding-unit: 0.5em;
+  @theme-border-radius: 0.5rem;
+  @theme-padding-unit: 0.5rem;
 ) {
   .make-color-table(@bg; @fg; @categoryName;) {
     --theme-color-bg-@{categoryName}-gradient-none: @bg;
@@ -105,3 +107,29 @@
 #make-category-classes(success);
 #make-category-classes(warning);
 #make-category-classes(error);
+
+.calc-variations(
+  p,
+  --theme-padding,
+  --theme-padding-unit,
+  0 0.5 1 2 3 4 5 6,
+  \*,
+  {
+    padding: var(--theme-padding);
+  }
+);
+
+.calc-variations(
+  rounded,
+  --theme-border-radius-setting,
+  --theme-border-radius,
+  0 0.5 1 2 3 4 5 6,
+  \*,
+  {
+    border-radius: var(--theme-border-radius-setting);
+  }
+);
+.rounded-full {
+  --theme-border-radius-setting: 100%;
+  border-radius: var(--theme-border-radius-setting);
+}

@@ -11,15 +11,15 @@ export class SimpleGreeting extends LitElement {
   name = 'Somebody';
 
   @property({type: Number})
-  p:PaddingValue = 0
+  p:PaddingValue = 2
 
   render() {
     console.log(this.p)
     return html`
-      <div class="cal-comp-theme-default">
-        <cal-comp-basic type="primary" fg="darkest" bg="lightest" p=${this.p}>
+      <div class="cal-comp cal-comp-theme-default fonted">
+        <cal-comp-themed classes="rounded-full" type="primary" fg="darkest" bg="lightest" p=${this.p} rounded=${this.p} fonted>
           ${this.name}
-        </cal-comp-basic>
+        </cal-comp-themed>
         <button @click="${()=> {this.p += 1; this.p %= 7;}}">p value ${this.p}</button>
       </div>
     `;
