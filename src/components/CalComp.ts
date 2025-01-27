@@ -1,6 +1,6 @@
 import {css, html, LitElement} from 'lit';
 import {customElement} from 'lit/decorators';
-import base from '../styles/base';
+import base from 'lofi-themes/dist/lit/lofi-themes';
 
 @customElement('cal-comp')
 export class SimpleGreeting extends LitElement {

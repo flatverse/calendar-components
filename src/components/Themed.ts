@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators";
 import { ClassInfo, classMap } from "lit/directives/class-map"
-import baseStyles from "../styles/base"
+import baseStyles from 'lofi-themes/dist/lit/lofi-themes';
 import { ColorShade, ColorType, PaddingValue } from "../styles/types";
 
 /**

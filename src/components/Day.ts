@@ -1,7 +1,7 @@
 import { css, CSSResultGroup, html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators";
 import { DayOfWeek } from "../styles/types";
-import baseStyles from "../styles/base"
+import baseStyles from 'lofi-themes/dist/lit/lofi-themes';
 
 @customElement("cal-day")
 export class DayComp extends LitElement {
